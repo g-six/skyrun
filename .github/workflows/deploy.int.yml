@@ -30,8 +30,8 @@ jobs:
     - run: npm run build
       env:
         API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
-        RELEASE_BUILD: github.run_number
-        RELEASE_SHA: github.github_sha
+        RELEASE_BUILD: ${{ github.run_number }}
+        RELEASE_SHA: ${{ github.GITHUB_SHA }}
     - name: Copy files to S3 bucket
       run:
         aws s3 sync out s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete
