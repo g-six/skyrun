@@ -14,7 +14,7 @@ export function VersionBox(
     RELEASE_BUILD: build,
     RELEASE_SHA: commit,
     RELEASE_DESC: description,
-    BITBUCKET_DEPLOYMENT_ENVIRONMENT: environment,
+    ENVIRONMENT_NAME: environment,
   } = getConfig().publicRuntimeConfig
   const release = {
     build,

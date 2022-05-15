@@ -4,7 +4,7 @@ const {
   RELEASE_VERSION,
   RELEASE_BUILD,
   RELEASE_SHA,
-  RELEASE_DESC,
+  ENVIRONMENT_NAME,
 } = process.env
 
 const nextConfig = {
@@ -15,7 +15,7 @@ const nextConfig = {
     RELEASE_VERSION,
     RELEASE_BUILD,
     RELEASE_SHA,
-    RELEASE_DESC,
+    ENVIRONMENT_NAME,
   },
 }
 
