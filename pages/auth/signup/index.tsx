@@ -320,12 +320,13 @@ export default function SignUp() {
               <div className="flex items-center h-10 justify-between">
                 <div>
                   Already signed up?{' '}
-                  <a
-                    href="/auth/login"
-                    className="text-green-base hover:text-green-hover active:text-green-focus"
-                  >
-                    Login
-                  </a>
+                  <Link passHref href="/auth/login">
+                    <a
+                      className="text-green-base hover:text-green-hover active:text-green-focus"
+                    >
+                      Login
+                    </a>
+                  </Link>
                 </div>
                 <VersionBox theme="light" />
               </div>

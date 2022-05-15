@@ -259,12 +259,13 @@ export default function Login() {
               <div className="flex items-center h-10 justify-between">
                 <div>
                   Got no account?{' '}
-                  <a
-                    href="/auth/signup"
-                    className="text-green-base hover:text-green-hover active:text-green-focus"
-                  >
-                    Sign-up
-                  </a>
+                  <Link href="/auth/signup" passHref>
+                    <a
+                      className="text-green-base hover:text-green-hover active:text-green-focus"
+                    >
+                      Sign-up
+                    </a>
+                  </Link>
                 </div>
                 <VersionBox theme="light" />
               </div>
