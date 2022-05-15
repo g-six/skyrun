@@ -37,6 +37,7 @@ jobs:
         RELEASE_BUILD: ${{ github.run_number }}
         RELEASE_SHA: ${{ steps.info.outputs.sha_short }}
         RELEASE_VERSION: ${{ steps.info.outputs.version }}
+        ENVIRONMENT_NAME: integration
     - name: Copy files to S3 bucket
       run:
         aws s3 sync out s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete
