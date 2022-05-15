@@ -10,16 +10,18 @@ import Layout from 'components/layout'
 import { VersionBox } from 'components/ui/version-box'
 import { AlertTriangleIcon, EyeIcon } from 'components/ui/basic-icons'
 import { EyeOffIcon } from '@heroicons/react/solid'
+import { Messages } from 'data-types/messages'
 
 export default function Login() {
   const router = useRouter()
   const { setUser, setRefresh } = useContext(AuthContext)
   const [hidden, setHidden] = useState(true)
-  let hpid
+  let hpid, message
 
   if (router && router.query) {
     const query = router.query as unknown as Record<string, string>
     hpid = query.id
+    message = query.msg
   }
 
   const [data, setData] = useState<Record<string, string>>(
@@ -102,7 +104,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Feasly | Login</title>
+        <title>50SoGrey | Login</title>
         <meta name="description" content="Login" />
       </Head>
       <div
@@ -118,9 +120,12 @@ export default function Login() {
               src="/logo.png"
               alt="GREY"
             />
-            <p className="mt-16 text-base text-blue-base">
+            <div className="mt-16 text-base text-blue-base">
+              {
+                  message && <p className='text-gray-500 text-xs font-medium leading-none mb-3 bg-gray-100 border-gray-400 rounded-md p-3 block whitespace-pre-wrap'>{Messages[message]} </p>
+              }
               Log in to your account.
-            </p>
+            </div>
           </div>
           <form onSubmit={handleSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
@@ -254,12 +259,13 @@ export default function Login() {
               <div className="flex items-center h-10 justify-between">
                 <div>
                   Got no account?{' '}
-                  <a
-                    href="/auth/signup"
-                    className="text-green-base hover:text-green-hover active:text-green-focus"
-                  >
-                    Sign-up
-                  </a>
+                  <Link href="/auth/signup" passHref>
+                    <a
+                      className="text-green-base hover:text-green-hover active:text-green-focus"
+                    >
+                      Sign-up
+                    </a>
+                  </Link>
                 </div>
                 <VersionBox theme="light" />
               </div>
