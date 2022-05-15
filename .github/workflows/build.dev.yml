@@ -35,8 +35,5 @@ jobs:
         ENVIRONMENT_NAME: integration
         DISPLAY: 3030
     - name: Run tests
-      uses: cypress-io/github-action@v2
-      with:
-        build: npm run build
-        start: npm run dev -- --port 3030
+      run: npm test
     
