@@ -32,3 +32,6 @@ jobs:
         API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
         RELEASE_BUILD: $GITHUB_RUN_NUMBER
         RELEASE_SHA: $GITHUB_SHA
+    - name: Copy files to S3 bucket
+      run:
+        aws s3 sync out s3://${{ secrets.AWS_S3_BUCKET_NAME }}

@@ -1,9 +1,6 @@
-import getConfig from 'next/config'
 import { Head, Html, Main, NextScript } from 'next/document'
 
 function Document() {
-  const { CHARGEBEE_SITE, CHARGEBEE_API_KEY } =
-    getConfig().publicRuntimeConfig
   return (
     <Html className="h-full">
       <Head>
