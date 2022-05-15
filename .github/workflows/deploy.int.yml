@@ -26,12 +26,17 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: export RELEASE_VERSION=`date +"0.%V.%j"`
+    - name: Set release info
+      id: info
+      run: |
+        echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        echo "::set-output name=version::$(date +"0.%V.%j")"
     - run: npm run build
       env:
         API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
         RELEASE_BUILD: ${{ github.run_number }}
-        RELEASE_SHA: ${{ github.GITHUB_SHA }}
+        RELEASE_SHA: ${{ steps.info.outputs.sha_short }}
+        RELEASE_VERSION: ${{ steps.info.outputs.version }}
     - name: Copy files to S3 bucket
       run:
         aws s3 sync out s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete
