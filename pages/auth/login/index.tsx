@@ -10,28 +10,18 @@ import Layout from 'components/layout'
 import { VersionBox } from 'components/ui/version-box'
 import { AlertTriangleIcon, EyeIcon } from 'components/ui/basic-icons'
 import { EyeOffIcon } from '@heroicons/react/solid'
-<<<<<<< HEAD
 import { Messages } from 'data-types/messages'
-=======
->>>>>>> 601d75199050826d29ccd4860c68e437fe8d291f
 
 export default function Login() {
   const router = useRouter()
   const { setUser, setRefresh } = useContext(AuthContext)
   const [hidden, setHidden] = useState(true)
-<<<<<<< HEAD
   let hpid, message
-=======
-  let hpid
->>>>>>> 601d75199050826d29ccd4860c68e437fe8d291f
 
   if (router && router.query) {
     const query = router.query as unknown as Record<string, string>
     hpid = query.id
-<<<<<<< HEAD
     message = query.msg
-=======
->>>>>>> 601d75199050826d29ccd4860c68e437fe8d291f
   }
 
   const [data, setData] = useState<Record<string, string>>(
@@ -114,11 +104,7 @@ export default function Login() {
   return (
     <>
       <Head>
-<<<<<<< HEAD
         <title>50SoGrey | Login</title>
-=======
-        <title>Feasly | Login</title>
->>>>>>> 601d75199050826d29ccd4860c68e437fe8d291f
         <meta name="description" content="Login" />
       </Head>
       <div
@@ -134,18 +120,12 @@ export default function Login() {
               src="/logo.png"
               alt="GREY"
             />
-<<<<<<< HEAD
             <div className="mt-16 text-base text-blue-base">
               {
                   message && <p className='text-gray-500 text-xs font-medium leading-none mb-3 bg-gray-100 border-gray-400 rounded-md p-3 block whitespace-pre-wrap'>{Messages[message]} </p>
               }
               Log in to your account.
             </div>
-=======
-            <p className="mt-16 text-base text-blue-base">
-              Log in to your account.
-            </p>
->>>>>>> 601d75199050826d29ccd4860c68e437fe8d291f
           </div>
           <form onSubmit={handleSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
