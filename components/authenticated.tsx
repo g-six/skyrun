@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import { User } from 'data-types/user'
 import { ReactElement, useEffect, useMemo, useState } from 'react'
+import { User } from 'data-types/user'
 import { getSessionTokens } from 'utils/session'
 import {
   AuthContext,
@@ -11,6 +11,8 @@ import {
 } from 'context/auth-context'
 import Navigation from './navigation'
 import Toast from './ui/toast'
+import FeatherIcon from './ui/feather-icon'
+import { DrawerMenuItem } from './ui/drawer-menu-item'
 
 interface AppWrapperProps {
   children: ReactElement
@@ -118,12 +120,51 @@ export function AppWrapper({ children }: AppWrapperProps) {
 }
 
 export default function AuthedLayout({ children }: any) {
+  const router = useRouter()
   return (
     <AppWrapper key="auth">
-      <div className="w-full min-h-full flex flex-col">
+      <div className="w-full h-screen flex flex-col">
         <Navigation />
         <Toast />
-        {children}
+        <div className='flex md:flex-row flex-col w-full flex-1'>
+          <nav className='flex flex-col md:w-80 bg-white shadow'>
+            <DrawerMenuItem label='Dashboard' onClick={() => {
+              router.push('/dashboard')
+            }} />
+
+            <DrawerMenuItem label='Repositories' onClick={() => {
+              router.push('/dashboard')
+            }} />
+
+            <DrawerMenuItem label='Experiences' onClick={() => {
+              router.push('/dashboard')
+            }} />
+
+            <DrawerMenuItem label='Skills' onClick={() => {
+              router.push('/dashboard')
+            }} />
+
+            <DrawerMenuItem label='Achievements' onClick={() => {
+              router.push('/dashboard')
+            }} />
+
+            <DrawerMenuItem label='Character References' onClick={() => {
+              router.push('/dashboard')
+            }} />
+
+            <DrawerMenuItem label='Social Media' onClick={() => {
+              router.push('/dashboard')
+            }} />
+
+            <DrawerMenuItem label='Interests' onClick={() => {
+              router.push('/dashboard')
+            }} />
+
+          </nav>
+          <section className='md:flex-1'>
+            {children}
+          </section>
+        </div>
       </div>
     </AppWrapper>
   )
