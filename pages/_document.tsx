@@ -2,11 +2,10 @@ import { Head, Html, Main, NextScript } from 'next/document'
 
 function Document() {
   return (
-    <Html className="h-full">
+    <Html className="h-full bg-gray-100">
       <Head>
         <>
           <link rel="icon" href="/favicon.ico" />
-          <script async src="https://unpkg.com/feather-icons" />
         </>
       </Head>
       <body className="h-full">

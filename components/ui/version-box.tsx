@@ -32,8 +32,8 @@ export function VersionBox(
                 ${open ? '' : 'text-opacity-90'}
                 ${
                   p.theme === 'light'
-                    ? 'hover:bg-neutral-100/80'
-                    : 'hover:bg-black/10'
+                    ? 'hover:bg-neutral-100/80 text-black'
+                    : 'hover:bg-black/10 text-white'
                 }
                 group px-2 py-1 rounded-md inline-flex items-center text-xs hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
