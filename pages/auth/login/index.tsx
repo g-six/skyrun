@@ -11,6 +11,7 @@ import { VersionBox } from 'components/ui/version-box'
 import { AlertTriangleIcon, EyeIcon } from 'components/ui/basic-icons'
 import { EyeOffIcon } from '@heroicons/react/solid'
 import { Messages } from 'data-types/messages'
+import { LoginInfo } from 'components/info/login-info'
 
 export default function Login() {
   const router = useRouter()
@@ -109,10 +110,11 @@ export default function Login() {
       </Head>
       <div
         className={`
-          min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8
+          min-h-full flex flex-col md:flex-row items-center justify-center py-12 px-4 sm:px-6 lg:px-8 md:gap-6
           ${ hidden && 'hide' }
         `}
       >
+        <LoginInfo />
         <div className="max-w-md w-full px-8 py-10 bg-white rounded-2xl">
           <div className="pb-4">
             <img

@@ -11,8 +11,8 @@ import {
 } from 'context/auth-context'
 import Navigation from './navigation'
 import Toast from './ui/toast'
-import FeatherIcon from './ui/feather-icon'
-import { DrawerMenuItem } from './ui/drawer-menu-item'
+import { Disclosure } from '@headlessui/react'
+import { Drawer } from './drawer'
 
 interface AppWrapperProps {
   children: ReactElement
@@ -121,55 +121,28 @@ export function AppWrapper({ children }: AppWrapperProps) {
 
 export default function AuthedLayout({ children }: any) {
   const router = useRouter()
+  const [is_collapsed, collapseDrawer] = useState<boolean>(true)
   return (
     <AppWrapper key="auth">
-      <div className="w-full h-screen flex flex-col">
-        <Navigation />
+      <Disclosure as="div" className="w-full h-screen flex flex-col">
+      {({ open }) => (<>
+        <Navigation open={open} />
         <Toast />
         <div className='flex md:flex-row flex-col w-full flex-1'>
-          <nav className='flex flex-col md:w-80 bg-white shadow'>
-            <DrawerMenuItem label='Dashboard' onClick={() => {
-              router.push('/dashboard')
-            }} />
+          <Disclosure.Panel>
+            <Drawer />
+          </Disclosure.Panel>
 
-            <DrawerMenuItem label='Repositories' onClick={() => {
-              router.push('/dashboard')
-            }} />
+          <div className='hidden md:flex h-full'>
+            <Drawer />
+          </div>
 
-            <DrawerMenuItem label='Experiences' onClick={() => {
-              router.push('/dashboard')
-            }} />
-
-            <DrawerMenuItem label='Skills' onClick={() => {
-              router.push('/dashboard')
-            }} />
-
-            <DrawerMenuItem label='Achievements' onClick={() => {
-              router.push('/dashboard')
-            }} />
-
-            <DrawerMenuItem label='Past / Current Projects' onClick={() => {
-              router.push('/dashboard')
-            }} />
-
-            <DrawerMenuItem label='Character References' onClick={() => {
-              router.push('/dashboard')
-            }} />
-
-            <DrawerMenuItem label='Social Media' onClick={() => {
-              router.push('/dashboard')
-            }} />
-
-            <DrawerMenuItem label='Interests' onClick={() => {
-              router.push('/dashboard')
-            }} />
-
-          </nav>
           <section className='md:flex-1'>
             {children}
           </section>
         </div>
-      </div>
+      </>)}
+      </Disclosure>
     </AppWrapper>
   )
 }
