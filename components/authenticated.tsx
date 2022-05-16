@@ -148,6 +148,10 @@ export default function AuthedLayout({ children }: any) {
               router.push('/dashboard')
             }} />
 
+            <DrawerMenuItem label='Past / Current Projects' onClick={() => {
+              router.push('/dashboard')
+            }} />
+
             <DrawerMenuItem label='Character References' onClick={() => {
               router.push('/dashboard')
             }} />
