@@ -69,13 +69,13 @@ export default function Navigation() {
                 <div className="flex-shrink-0 flex items-center">
                   <img
                     className="block lg:hidden h-8 w-auto"
-                    src="/logo-m.svg"
-                    alt="Feasly"
+                    src="/logo.png"
+                    alt="50SoGREY"
                   />
                   <img
                     className="hidden lg:block h-10 w-auto"
-                    src="/logo-w.svg"
-                    alt="Feasly"
+                    src="/logo.png"
+                    alt="50SoGREY"
                   />
                 </div>
                 <div className="hidden sm:block sm:ml-6">

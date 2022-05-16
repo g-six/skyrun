@@ -68,7 +68,7 @@ export default function Login() {
     } else if (response.type === 'NotAuthorizedException') {
       setHasLoginErrors(true)
     } else {
-      if (response.redirect_to) {
+      if (response.record) {
         saveSessionTokens(response.record)
         setUser(response.record)
         setRefresh(true)
@@ -78,7 +78,7 @@ export default function Login() {
             params = window.location.hash
           }
         }
-        redirect_to = `${response.redirect_to}${params}`
+        redirect_to = `${response.meta?.redirect_to || '/dashboard'}${params}`
       }
       setTimeout(() => {
         router.push(redirect_to)
@@ -237,25 +237,6 @@ export default function Login() {
             </div>
             <div className="border-t border-neutral-gray-03 pb-6 mt-6" />
             <div className="text-xs text-neutral-gray-00">
-              By continuing, you agree to Feasly&#39;s{' '}
-              <Link passHref href="/auth/forgot-password">
-                <a
-                  href="#"
-                  className="text-green-base hover:text-green-hover active:text-green-focus"
-                >
-                  Terms of Use
-                </a>
-              </Link>
-              . Read our{' '}
-              <Link passHref href="/auth/forgot-password">
-                <a
-                  href="#"
-                  className="text-green-base hover:text-green-hover active:text-green-focus"
-                >
-                  Privacy Policy
-                </a>
-              </Link>
-              .
               <div className="flex items-center h-10 justify-between">
                 <div>
                   Got no account?{' '}
